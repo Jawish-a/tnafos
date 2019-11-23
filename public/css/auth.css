@@ -1,0 +1,100 @@
+.left-panel {
+    height: 100vh;
+    background:
+        linear-gradient(rgba(0, 0, 0, 0.45),
+        rgba(0, 0, 0, 0.45)),
+        url("/img/dimitar-donovski-pS_i78j95Es-unsplash.jpg");
+    background-position: center;
+    background-size: cover;
+
+}
+.left-panel-register {
+    height: 100vh;
+    background:
+        linear-gradient(rgba(0, 0, 0, 0.45),
+        rgba(0, 0, 0, 0.45)),
+        url("/img/georgi-kyurpanov-Vfo4mszghMk-unsplash.jpg");
+    background-position: center;
+    background-size: cover;
+
+}
+
+.right-panel {
+    height: 100vh;
+    background-color: white;
+    background-size: cover;
+}
+
+.logo {
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+}
+
+.l-b-t {
+    text-align: center;
+    position: absolute;
+    top: 95%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+}
+.r-b-t {
+    text-align: center;
+    position: absolute;
+    top: 95%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #333333;
+}
+
+.btn-tnafos {
+    color: #fff;
+    background-color: #f8b916;
+    border-color: #f8b916;
+}
+
+.btn-tnafos:hover {
+    color: #fff;
+    background-color: #f6aa1b;
+    border-color: #f7a21c;
+}
+
+.btn-tnafos:focus,
+.btn-tnafos.focus {
+    box-shadow: 0 0 0 0.2rem rgba(248, 185, 22, 0.5);
+}
+
+.btn-tnafos.disabled,
+.btn-tnafos:disabled {
+    color: #fff;
+    background-color: #f8b916;
+    border-color: #f8b916;
+}
+
+.btn-tnafos:not(:disabled):not(.disabled):active,
+.btn-tnafos:not(:disabled):not(.disabled).active,
+.show>.btn-tnafos.dropdown-toggle {
+    color: #fff;
+    background-color: #f7a21c;
+    border-color: #f7a21c;
+}
+
+.btn-tnafos:not(:disabled):not(.disabled):active:focus,
+.btn-tnafos:not(:disabled):not(.disabled).active:focus,
+.show>.btn-tnafos.dropdown-toggle:focus {
+    box-shadow: 0 0 0 0.2rem rgba(248, 185, 22, 0.5);
+}
+.text-tnafos{
+    color: #f8b916;
+}
+.form-control:focus {
+    color: #6e707e;
+    background-color: #fff;
+    border-color: #bac8f3;
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(248, 185, 22, 0.25);
+}

@@ -6,4 +6,4 @@
 <script src="{{asset('js/admin.js')}}"></script>
 
 {{-- page specific scripts  --}}
-@yield('pagescript')
+@yield('page_scripts')

@@ -107,19 +107,66 @@
             <div class="col-sm-12 my-auto">
                 <form method="POST" action="{{ route('register') }}">
                     @csrf
-
                     <div class="form-group row">
-                        <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
+                        <h3 class="col-md-4 text-md-right text-tnafos">Register</h3>
+                    </div>
+                    <div class="form-group row">
+                        <label for="first_name" class="col-md-4 col-form-label text-md-right">First Name</label>
 
                         <div class="col-md-6">
-                            <input id="name" type="text" class="form-control @error('name') is-invalid @enderror"
-                                name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                            <input id="first_name" type="text"
+                                class="form-control @error('first_name') is-invalid @enderror" name="first_name"
+                                value="{{ old('first_name') }}" required autocomplete="first_name" autofocus>
 
-                            @error('name')
+                            @error('first_name')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
                             @enderror
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="last_name" class="col-md-4 col-form-label text-md-right">Last Name</label>
+
+                        <div class="col-md-6">
+                            <input id="last_name" type="text"
+                                class="form-control @error('last_name') is-invalid @enderror" name="last_name"
+                                value="{{ old('last_name') }}" required autocomplete="last_name">
+
+                            @error('last_name')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
+                        </div>
+                    </div>
+
+
+                    <div class="form-group row">
+                        <label for="mobile" class="col-md-4 col-form-label text-md-right">Mobile</label>
+
+                        <div class="col-md-6">
+
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="basic-addon1">+966</span>
+                                </div>
+                                <input id="mobile" type="text"
+                                    class="form-control @error('mobile') is-invalid @enderror" placeholder="59xxxxxxx"
+                                    name="mobile" value="{{ old('mobile') }}" required autocomplete="mobile"
+                                    aria-label="Username" aria-describedby="basic-addon1">
+                                @error('mobile')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+
+                            </div>
+
+                            {{-- <input id="mobile" type="text" class="form-control @error('mobile') is-invalid @enderror"
+                                name="mobile" value="{{ old('mobile') }}" required autocomplete="mobile" >
+                            --}}
                         </div>
                     </div>
 

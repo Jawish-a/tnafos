@@ -42,4 +42,9 @@ class User extends Authenticatable
         return $this->hasOne('App\Company', 'id','id');
     }
 
+    public function company()
+    {
+        return $this->belongsTo('App\Company');
+    }
+
 }

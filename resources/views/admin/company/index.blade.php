@@ -3,6 +3,7 @@
 {{$company->name}}
 @endsection
 @section('content')
+
 <div class="row">
 
     <!-- Earnings (Monthly) Card Example -->
@@ -92,7 +93,8 @@
             <div class="card-header py-3">
                 <div class="d-sm-flex align-items-center justify-content-between">
                     <h6 class="m-0 font-weight-bold text-primary">Basic Profile Info</h6>
-                    <a href="{{route('company.edit', $company)}}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+                    <a href="{{route('company.edit', $company)}}"
+                        class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
                             class="fas fa-pen fa-sm text-white-50 pr-2"></i>Update Profile</a>
                 </div>
             </div>
@@ -301,4 +303,3 @@
     </div>
 </div>
 @endsection
-

@@ -23,7 +23,7 @@ class CompanyController extends Controller
         if (is_null(auth()->user()->company_id)) {
             return redirect()->route('company.create');
         } else {
-            $company = Company::find(auth()->user()->admin->id);
+            $company = Company::find(auth()->user()->company->id);
             return view('admin.company.index')->with('company', $company);
         }
     }
@@ -107,8 +107,13 @@ class CompanyController extends Controller
     public function edit(Company $company)
     {
         //
-        $countries = Country::all();
-        return view('admin.company.edit')->with('company', $company)->with('countries', $countries);
+        if (auth()->user()->id == auth()->user()->company->admin->id) {
+            $countries = Country::all();
+            return view('admin.company.edit')->with('company', $company)->with('countries', $countries);
+        } else {
+            $error = 'You are not the admin of this company!';
+            return redirect()->route('company.index')->with('error',$error );
+        }
     }
 
     /**
@@ -141,7 +146,6 @@ class CompanyController extends Controller
         $company->location = $request->location;
         $company->save();
         return redirect()->route('company.index');
-
     }
 
     /**

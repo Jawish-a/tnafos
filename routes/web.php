@@ -22,7 +22,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/dashboard', function () {
     return view('admin.dashboard');
-})->name('dashboard');
+})->name('dashboard')->middleware('auth');
 
 
-Route::resource('company', 'CompanyController');
+Route::resource('company', 'CompanyController')->middleware('auth');
+Route::resource('user', 'UserController')->middleware('auth');

@@ -2562,6 +2562,7 @@ a.btn.disabled,
 fieldset:disabled a.btn {
     pointer-events: none;
 }
+
 .btn-tnafos {
     color: #fff;
     background-color: #f8b916;
@@ -10823,6 +10824,7 @@ a:focus {
     background-image: linear-gradient(180deg, #444444 10%, #333333 100%);
     background-size: cover;
 }
+
 .bg-gradient-tnafos-alt {
     background-color: #f8b916;
     background-image: linear-gradient(180deg, #efb44b 10%, #f8b916 100%);
@@ -10988,6 +10990,13 @@ a:focus {
 
 .border-left-success {
     border-left: 0.25rem solid #1cc88a !important;
+}
+
+.border-bottom-tnafos {
+    border-bottom: 0.25rem solid #f8b916 !important;
+}
+.border-left-tnafos {
+    border-bottom: 0.25rem solid #f8b916 !important;
 }
 
 .border-bottom-success {

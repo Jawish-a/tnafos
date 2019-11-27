@@ -27,3 +27,4 @@ Route::get('/dashboard', function () {
 
 Route::resource('company', 'CompanyController')->middleware('auth');
 Route::resource('user', 'UserController')->middleware('auth');
+Route::resource('service', 'ServiceController')->middleware('auth');

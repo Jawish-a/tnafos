@@ -1,7 +1,7 @@
 <ul class="navbar-nav bg-gradient-tnafos sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{url('/')}}">
         <div class="sidebar-brand-icon">
             @include('layouts.logo')
         </div>
@@ -101,6 +101,22 @@
     </li>
 
     <!-- Divider -->
+    <hr class="sidebar-divider d-none d-md-block">
+    <div class="sidebar-heading">
+        App Settings
+    </div>
+
+    <!-- Nav Item - Tables -->
+    <li class="nav-item">
+        <a class="nav-link" href="{{route('settings.index')}}">
+            <i class="fas fa-fw fa-table"></i>
+            <span>Settings</span></a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{{route('category.index')}}">
+            <i class="fas fa-fw fa-table"></i>
+            <span>Category</span></a>
+    </li>
     <hr class="sidebar-divider d-none d-md-block">
 
     <!-- Sidebar Toggler (Sidebar) -->

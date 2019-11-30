@@ -78,30 +78,11 @@ Create Your Company Profile
                         <label class="col-sm-2 col-form-label text-md-right">Main Services</label>
                         <div class="col-sm-10">
                             <div class="form-group bmd-form-group">
-                                <select name="main_services" class="form-control" name="type" id="type" required>
+                                <select  class="form-control" name="category_id" id="type" required>
                                     <option value="" disabled selected>Please select one</option>
-                                    <option value="Computing">Computing</option>
-                                    <option value="Networks & Communication">Networks & Communication</option>
-                                    <option value="Management">Software</option>
-                                    <option value="Management">Profesional Services</option>
-                                    <option value="Management">Consulting</option>
-                                    <option value="Management">Finance</option>
-                                    <option value="Management">Insurance</option>
-                                    <option value="Management">Travel</option>
-                                    <option value="Management">Events</option>
-                                    <option value="Management">Food</option>
-                                    <option value="Management">Marketing</option>
-                                    <option value="Management">Reasearch</option>
-                                    <option value="Management">Media</option>
-                                    <option value="Management">Distribution</option>
-                                    <option value="Management">Supply</option>
-                                    <option value="Management">Printing & Prototyping</option>
-                                    <option value="Management">Production</option>
-                                    <option value="Management">Engineering</option>
-                                    <option value="Management">Design</option>
-                                    <option value="Management">Utilities</option>
-                                    <option value="Management">Logistics</option>
-                                    <option value="Management">Waste Management</option>
+                                    @foreach ($categories as $category)
+                                    <option value="{{$category->id}}">{{$category->name}}</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
@@ -243,7 +224,7 @@ Create Your Company Profile
                         <label class="col-sm-2 col-form-label text-md-right">Total Employees</label>
                         <div class="col-sm-10">
                             <div class="form-group bmd-form-group">
-                                <input type="number" name="total_employees" class="form-control" placeholder="e.g. 50"
+                                <input type="number" min="1" name="total_employees" class="form-control" placeholder="e.g. 50"
                                     required value="{{old('total_employees')}}">
                             </div>
                         </div>
@@ -253,7 +234,8 @@ Create Your Company Profile
                         <label class="col-sm-2 col-form-label text-md-right">Company Bio</label>
                         <div class="col-sm-10">
                             <div class="form-group bmd-form-group">
-                                <textarea class="form-control" name="bio" rows="3" maxlength="255">{{old('bio')}}</textarea>
+                                <textarea class="form-control" name="bio" rows="3"
+                                    maxlength="255">{{old('bio')}}</textarea>
                             </div>
                         </div>
                     </div>

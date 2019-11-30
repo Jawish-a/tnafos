@@ -28,3 +28,6 @@ Route::get('/dashboard', function () {
 Route::resource('company', 'CompanyController')->middleware('auth');
 Route::resource('user', 'UserController')->middleware('auth');
 Route::resource('service', 'ServiceController')->middleware('auth');
+Route::resource('settings', 'SettingsController')->middleware('auth');
+Route::resource('category', 'CategoryController')->middleware('auth');
+

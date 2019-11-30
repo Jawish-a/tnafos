@@ -22,7 +22,8 @@ Create New Service
             </div>
             <div class="card-body">
                 {{-- form starts here --}}
-                <form method="post" action="{{action('ServiceController@store')}}" class="form-horizontal" id="user_form">
+                <form method="post" action="{{action('ServiceController@store')}}" class="form-horizontal"
+                    id="user_form">
                     @csrf
                     {{-- name --}}
                     <div class="row">
@@ -63,7 +64,7 @@ Create New Service
                         <div class="col-sm-10">
                             <div class="form-group bmd-form-group">
                                 <input type="text" name="unit" class="form-control" placeholder="eg. design, month, etc"
-                                     required value="{{old('unit')}}">
+                                    required value="{{old('unit')}}">
                             </div>
                         </div>
                     </div>
@@ -80,7 +81,20 @@ Create New Service
                             </div>
                         </div>
                     </div>
-
+                    {{-- main_services --}}
+                    <div class="row">
+                        <label class="col-sm-2 col-form-label text-md-right">Main Services</label>
+                        <div class="col-sm-10">
+                            <div class="form-group bmd-form-group">
+                                <select class="form-control" name="category_id" id="category_id" required>
+                                    <option value="" disabled selected>Please select one</option>
+                                    @foreach ($categories as $category)
+                                    <option value="{{$category->id}}">{{$category->name}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                    </div>
                     {{-- terms and condition --}}
                     <div class="row py-4">
                         <label class="col-sm-2 col-form-label text-md-right"></label>

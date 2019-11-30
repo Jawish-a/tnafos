@@ -30,6 +30,8 @@ class ServiceStoreRequest extends FormRequest
             'rate' => 'required|regex:/^[0-9]+$/',
             'unit' => 'required',
             'type' => 'required|in:hourly,project',
+            'category_id' => 'required',
+
         ];
     }
 }

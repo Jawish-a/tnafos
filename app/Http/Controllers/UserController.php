@@ -60,7 +60,7 @@ class UserController extends Controller
         $user->password = Hash::make($request->password);
         $user->company_id = auth()->user()->company->id;
         $user->save();
-        return redirect()->back();
+        return redirect()->route('user.index');
     }
 
     /**

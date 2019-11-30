@@ -8,7 +8,7 @@ class Company extends Model
 {
     // mass assignment
     protected $fillable = [
-        'name', 'type', 'cr', 'vat', 'main_services', 'establishment_year', 'total_employees', 'bio',
+        'name', 'type', 'cr', 'vat', 'establishment_year', 'total_employees', 'bio',
         'telephone', 'fax', 'email', 'website', 'country', 'city', 'po_box', 'zip_code',
         'address', 'location','admin'
     ];
@@ -21,6 +21,11 @@ class Company extends Model
     public function admin()
     {
         return $this->belongsTo('App\User', 'admin_id', 'id');
+    }
+
+    public function category()
+    {
+        return $this->belongsTo('App\Category');
     }
 
 }

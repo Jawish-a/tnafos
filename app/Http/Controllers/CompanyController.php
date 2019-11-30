@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
 use App\Company;
 use App\Country;
 use App\User;
@@ -37,8 +38,12 @@ class CompanyController extends Controller
     {
         //
         if (is_null(auth()->user()->company_id)) {
+            $categories = Category::where('parent_id','=', NULL)->get();
             $countries = Country::all();
-            return view('admin.company.create')->with('countries', $countries);
+            return view('admin.company.create')->with([
+                'categories' => $categories,
+                'countries' => $countries
+            ]);
         } else {
             return redirect()->route('company.index');
         }
@@ -65,7 +70,6 @@ class CompanyController extends Controller
         $company->type = $request->type;
         $company->cr = $request->cr;
         $company->vat = $request->vat;
-        $company->main_services = $request->main_services;
         $company->establishment_year = $request->establishment_year;
         $company->total_employees = $request->total_employees;
         $company->bio = $request->bio;
@@ -79,6 +83,7 @@ class CompanyController extends Controller
         $company->zip_code = $request->zip_code;
         $company->address = $request->address;
         $company->location = $request->location;
+        $company->category_id = $request->category_id;
         $company->admin_id = auth()->user()->id;
         $company->save();
         $user = User::find(auth()->user()->id);
@@ -130,7 +135,6 @@ class CompanyController extends Controller
         $company->type = $request->type;
         $company->cr = $request->cr;
         $company->vat = $request->vat;
-        $company->main_services = $request->main_services;
         $company->establishment_year = $request->establishment_year;
         $company->total_employees = $request->total_employees;
         $company->bio = $request->bio;
@@ -144,6 +148,7 @@ class CompanyController extends Controller
         $company->zip_code = $request->zip_code;
         $company->address = $request->address;
         $company->location = $request->location;
+        $company->category_id = $request->category_id;
         $company->save();
         return redirect()->route('company.index');
     }

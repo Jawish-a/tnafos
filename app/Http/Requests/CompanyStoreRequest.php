@@ -30,10 +30,9 @@ class CompanyStoreRequest extends FormRequest
         return [
             //
             'name' => 'required|string|max:255',
-            'type' => 'required',
+            'type' => 'required|in:Company,Establishment,Organization',
             'cr' => 'required|regex:/^[0-9]+$/',
             'vat' => 'required|regex:/^[0-9]+$/',
-            'main_services' => 'required',
             'establishment_year' => 'required|integer|between:1900,2020',
             'total_employees' => 'integer|between:0,99999',
             'bio' => 'string|max:255',

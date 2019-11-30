@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Category;
-use App\Http\Requests\ServiceStoreRequest;
-use App\Service;
+use App\Settings;
 use Illuminate\Http\Request;
 
-class ServiceController extends Controller
+class SettingsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,8 +15,7 @@ class ServiceController extends Controller
     public function index()
     {
         //
-        $services = Service::all();
-        return view('admin.service.index')->with('services', $services);
+        return view('admin.settings.index');
     }
 
     /**
@@ -29,9 +26,6 @@ class ServiceController extends Controller
     public function create()
     {
         //
-        $categories = Category::all();
-        return view('admin.service.create')->with('categories', $categories);
-
     }
 
     /**
@@ -40,21 +34,18 @@ class ServiceController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ServiceStoreRequest $request)
+    public function store(Request $request)
     {
         //
-        $service = new Service;
-        $service->create($request->validated());
-        return redirect()->route('service.index');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Service  $service
+     * @param  \App\Settings  $settings
      * @return \Illuminate\Http\Response
      */
-    public function show(Service $service)
+    public function show(Settings $settings)
     {
         //
     }
@@ -62,10 +53,10 @@ class ServiceController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Service  $service
+     * @param  \App\Settings  $settings
      * @return \Illuminate\Http\Response
      */
-    public function edit(Service $service)
+    public function edit(Settings $settings)
     {
         //
     }
@@ -74,10 +65,10 @@ class ServiceController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Service  $service
+     * @param  \App\Settings  $settings
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Service $service)
+    public function update(Request $request, Settings $settings)
     {
         //
     }
@@ -85,10 +76,10 @@ class ServiceController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Service  $service
+     * @param  \App\Settings  $settings
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Service $service)
+    public function destroy(Settings $settings)
     {
         //
     }

@@ -26,7 +26,6 @@ class CreateCompaniesTable extends Migration
             $table->string('type');
             $table->string('cr');
             $table->string('vat');
-            $table->string('main_services');
             $table->string('establishment_year');
             $table->string('total_employees');
             $table->string('bio');
@@ -42,6 +41,8 @@ class CreateCompaniesTable extends Migration
             $table->string('location');
             $table->unsignedBigInteger('admin_id');
             $table->foreign('admin_id')->references('id')->on('users');
+            $table->unsignedBigInteger('category_id');
+            $table->foreign('category_id')->references('id')->on('categories');
 
             $table->timestamps();
         });

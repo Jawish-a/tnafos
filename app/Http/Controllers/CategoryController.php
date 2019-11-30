@@ -3,11 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Category;
-use App\Http\Requests\ServiceStoreRequest;
-use App\Service;
 use Illuminate\Http\Request;
 
-class ServiceController extends Controller
+class CategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,8 +15,8 @@ class ServiceController extends Controller
     public function index()
     {
         //
-        $services = Service::all();
-        return view('admin.service.index')->with('services', $services);
+        $categories = Category::all();
+        return view('admin.category.index')->with('categories', $categories);
     }
 
     /**
@@ -30,7 +28,7 @@ class ServiceController extends Controller
     {
         //
         $categories = Category::all();
-        return view('admin.service.create')->with('categories', $categories);
+        return view('admin.category.create')->with('categories', $categories);
 
     }
 
@@ -40,21 +38,21 @@ class ServiceController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ServiceStoreRequest $request)
+    public function store(Request $request)
     {
         //
-        $service = new Service;
-        $service->create($request->validated());
-        return redirect()->route('service.index');
+        $category = new Category;
+        $category->create($request->all());
+        return redirect()->route('category.index');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Service  $service
+     * @param  \App\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function show(Service $service)
+    public function show(Category $category)
     {
         //
     }
@@ -62,10 +60,10 @@ class ServiceController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Service  $service
+     * @param  \App\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function edit(Service $service)
+    public function edit(Category $category)
     {
         //
     }
@@ -74,10 +72,10 @@ class ServiceController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Service  $service
+     * @param  \App\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Service $service)
+    public function update(Request $request, Category $category)
     {
         //
     }
@@ -85,10 +83,10 @@ class ServiceController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Service  $service
+     * @param  \App\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Service $service)
+    public function destroy(Category $category)
     {
         //
     }

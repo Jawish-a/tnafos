@@ -1,4 +1,4 @@
 @extends('layouts.admin.master')
 @section('content')
-    <div class=""></div>
+    <div class="row"></div>
 @endsection

@@ -30,8 +30,12 @@ class ServiceController extends Controller
     {
         //
         $categories = Category::all();
-        return view('admin.service.create')->with('categories', $categories);
-
+        $services = Service::all('name')->pluck('name');
+        //return $services;
+        return view('admin.service.create')->with([
+            'categories' => $categories,
+            'services' => $services
+        ]);
     }
 
     /**
@@ -42,10 +46,10 @@ class ServiceController extends Controller
      */
     public function store(ServiceStoreRequest $request)
     {
-        //
-        $service = new Service;
-        $service->create($request->validated());
-        return redirect()->route('service.index');
+        // Find or create your service if it does not exists
+        $service = Service::firstOrCreate(['name' => $request->name]);
+        // Attach it your company
+        $service->companies()->attach(auth()->user()->company);
     }
 
     /**

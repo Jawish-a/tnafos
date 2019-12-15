@@ -28,4 +28,9 @@ class Company extends Model
         return $this->belongsTo('App\Category');
     }
 
+    public function services()
+    {
+        return $this->belongsToMany('App\Service');
+    }
+
 }

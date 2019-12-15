@@ -2,6 +2,61 @@
 @section('page_title')
 Create New Service
 @endsection
+@section('pagecss')
+<style>
+    .autocomplete {
+        /*the container must be positioned relative:*/
+        position: relative;
+        display: inline-block;
+    }
+
+    input {
+        border: 1px solid transparent;
+        background-color: #f1f1f1;
+        padding: 10px;
+        font-size: 16px;
+    }
+
+    input[type=text] {
+        background-color: #f1f1f1;
+        width: 100%;
+    }
+
+    input[type=submit] {
+        background-color: DodgerBlue;
+        color: #fff;
+    }
+
+    .autocomplete-items {
+        border: 1px solid #d4d4d4;
+        border-bottom: none;
+        border-top: none;
+        z-index: 99;
+        /*position the autocomplete items to be the same width as the container:*/
+        top: 100%;
+        left: 0;
+        right: 0;
+    }
+
+    .autocomplete-items div {
+        padding: 10px;
+        cursor: pointer;
+        background-color: #fff;
+        border-bottom: 1px solid #d4d4d4;
+    }
+
+    .autocomplete-items div:hover {
+        /*when hovering an item:*/
+        background-color: #e9e9e9;
+    }
+
+    .autocomplete-active {
+        /*when navigating through the items using the arrow keys:*/
+        background-color: DodgerBlue !important;
+        color: #ffffff;
+    }
+</style>
+@endsection
 @section('content')
 <div class="row">
     @if ($errors->any())
@@ -22,8 +77,8 @@ Create New Service
             </div>
             <div class="card-body">
                 {{-- form starts here --}}
-                <form method="post" action="{{action('ServiceController@store')}}" class="form-horizontal"
-                    id="user_form">
+                <form method="post" action="{{action('ServiceController@store')}}" autocomplete="off"
+                    class="form-horizontal" id="user_form">
                     @csrf
                     {{-- name --}}
                     <div class="row">
@@ -31,7 +86,8 @@ Create New Service
                         <div class="col-sm-10">
                             <div class="form-group bmd-form-group">
                                 <input type="text" name="name" class="form-control" placeholder="Name of the Service"
-                                    autofocus required value="{{old('name')}}">
+                                    autofocus required value="{{old('name')}}" id="myInput">
+                                <datalist id="huge_list">hello</datalist>
                             </div>
                         </div>
                     </div>
@@ -73,7 +129,7 @@ Create New Service
                         <label class="col-sm-2 col-form-label text-md-right">Type</label>
                         <div class="col-sm-10">
                             <div class="form-group bmd-form-group">
-                                <select class="form-control" name="type" id="type">
+                                <select class="form-control select2" name="type" id="type">
                                     <option value="" disabled selected>Please Select One</option>
                                     <option value="hourly">Hourly</option>
                                     <option value="project">Project</option>
@@ -86,7 +142,7 @@ Create New Service
                         <label class="col-sm-2 col-form-label text-md-right">Main Services</label>
                         <div class="col-sm-10">
                             <div class="form-group bmd-form-group">
-                                <select class="form-control" name="category_id" id="category_id" required>
+                                <select class="form-control select2" name="category_id" id="category_id" required>
                                     <option value="" disabled selected>Please select one</option>
                                     @foreach ($categories as $category)
                                     <option value="{{$category->id}}">{{$category->name}}</option>
@@ -138,4 +194,24 @@ Create New Service
         </div>
     </div>
 </div>
+@endsection
+
+@section('page_scripts')
+<script src="{{asset('/js/autocomplete.js')}}"></script>
+
+<script>
+    var services = @json($services);
+    autocomplete(document.getElementById("myInput"), services);
+</script>
+
+{{-- <script type="text/javascript">
+    var services = {!! json_encode($services->toArray()) !!};
+    $('#myInput').typeahead({
+        source:  function (term, process) {
+        return $.get(route, { term: term }, function (data) {
+                return process(data);
+            });
+        }
+    });
+</script> --}}
 @endsection

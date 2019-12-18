@@ -17,7 +17,9 @@ class ServiceController extends Controller
     public function index()
     {
         //
-        $services = Service::all();
+        $company = auth()->user()->company;
+        $services = $company->services;
+        //return $services;
         return view('admin.service.index')->with('services', $services);
     }
 
@@ -46,10 +48,31 @@ class ServiceController extends Controller
      */
     public function store(ServiceStoreRequest $request)
     {
-        // Find or create your service if it does not exists
-        $service = Service::firstOrCreate(['name' => $request->name]);
-        // Attach it your company
-        $service->companies()->attach(auth()->user()->company);
+
+        $request->validated();
+        // Find or create service if it does not exists
+        $service = Service::firstOrCreate(
+            ['name' => $request->name],
+            [
+                'description' => $request->description,
+                'category_id' => $request->category_id
+            ],
+        );
+        // check if the service already has the same company in pivot table
+        $check_compny_service =  $service->companies()->where('company_id', auth()->user()->company->id)->where('service_id', $service->id)->exists();
+        if (!$check_compny_service) {
+            // attach service details and company id
+            // Attach it your company
+            $service->companies()->attach(
+                auth()->user()->company,
+                [
+                    'rate' => $request->rate,
+                    'unit' => $request->unit,
+                    'type' => $request->type
+                ]
+            );
+        };
+        return redirect()->route('service.index');
     }
 
     /**

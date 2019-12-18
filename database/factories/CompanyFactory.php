@@ -32,8 +32,8 @@ $factory->define(Company::class, function (Faker $faker) {
         'zip_code' => $faker->postcode,
         'address' => $faker->address,
         'location' => $faker->latitude.', '.$faker->longitude,
-        'admin_id' => User::all()->random()->id,
-        'category_id' => Category::all()->random()->id,
+        'admin_id' => App\User::all()->random()->id,
+        'category_id' => App\Category::all()->random()->id,
 
     ];
 });

@@ -10,9 +10,6 @@ $factory->define(Service::class, function (Faker $faker) {
         //         'name', 'description', 'rate','unit', 'type', 'category_id'
         'name' => $faker->name,
         'description' => $faker->text($maxNbChars = 20),
-        'rate' => $faker->randomDigit,
-        'unit' => $faker->name,
-        'type' => $faker->randomElement(['Hourly','Project']),
-        'category_id' => Category::all()->random()->id,
+        'category_id' => App\Category::all()->random()->id,
     ];
 });

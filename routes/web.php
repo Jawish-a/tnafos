@@ -20,14 +20,15 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 
-Route::get('/dashboard', function () {
-    return view('admin.dashboard');
-})->name('dashboard')->middleware('auth');
 
+Route::group(['prefix' => 'admin'], function () {
+    Route::get('/dashboard', function () {
+        return view('admin.dashboard');
+    })->name('dashboard')->middleware('auth');
 
-Route::resource('company', 'CompanyController')->middleware('auth');
-Route::resource('user', 'UserController')->middleware('auth');
-Route::resource('service', 'ServiceController')->middleware('auth');
-Route::resource('settings', 'SettingsController')->middleware('auth');
-Route::resource('category', 'CategoryController')->middleware('auth');
-
+    Route::resource('company', 'CompanyController')->middleware('auth');
+    Route::resource('user', 'UserController')->middleware('auth');
+    Route::resource('service', 'ServiceController')->middleware('auth');
+    Route::resource('settings', 'SettingsController')->middleware('auth');
+    Route::resource('category', 'CategoryController')->middleware('auth');
+});

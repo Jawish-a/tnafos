@@ -15,10 +15,16 @@ class CreateCompanyServiceTable extends Migration
     {
         Schema::create('company_service', function (Blueprint $table) {
             // no need for the id here
+            // unique and primary code is a combination of two ids
+            $table->primary(['company_id', 'service_id']);
             $table->unsignedBigInteger('company_id');
             $table->foreign('company_id')->references('id')->on('companies');
             $table->unsignedBigInteger('service_id');
             $table->foreign('service_id')->references('id')->on('services');
+            // pivot table extra fields
+            $table->string('rate');
+            $table->string('unit');
+            $table->string('type');
             $table->timestamps();
         });
     }

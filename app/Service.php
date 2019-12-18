@@ -8,7 +8,7 @@ class Service extends Model
 {
     //
     protected $fillable = [
-        'name', 'description', 'rate','unit', 'type', 'category_id'
+        'name', 'description', 'category_id'
     ];
 
     public function category()
@@ -18,6 +18,6 @@ class Service extends Model
 
     public function companies()
     {
-        return $this->belongsToMany('App\Company');
+        return $this->belongsToMany('App\Company')->withPivot('rate', 'unit', 'type')->withTimestamps();
     }
 }

@@ -11,6 +11,16 @@ use Illuminate\Http\Request;
 
 class CompanyController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('CheckCompany')->except([
+            'index',
+            'create',
+        ]);
+    }
+
+
     /**
      * Display a listing of the resource.
      *

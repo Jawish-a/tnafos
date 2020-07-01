@@ -24,11 +24,12 @@
                 <div class="collapse navbar-collapse" id="navcol-1">
                     <span class="ml-auto navbar-text">
                         @auth
-                        <a class="" href="{{Route('dashboard')}}">Dashboard</a>
+                        <a class="btn btn-tnafos" href="{{Route('dashboard')}}">Dashboard</a>
                         {{-- user profile picture --}}
                         <a class="dropdown-toggle pl-3" href="#" id="userDropdown" role="button" data-toggle="dropdown"
                             aria-haspopup="true" aria-expanded="false">
-                            <span class="mr-2 d-none d-lg-inline text-gray-600">{{auth()->user()->first_name.' '.auth()->user()->last_name}}</span>
+                            <span
+                                class="mr-2 d-none d-lg-inline text-gray-600">{{auth()->user()->first_name.' '.auth()->user()->last_name}}</span>
                             <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
                         </a>
                         {{-- user dropdown menu --}}
@@ -56,7 +57,8 @@
                         {{-- show signup & login links --}}
                         <a class="btn btn-light mr-1" href="{{route('login')}}">Log In</a>
                         @if (Route::has('register'))
-                        <a class="btn btn-tnafos action-button pr-3" role="button" href="{{route('register')}}">Sign Up</a>
+                        <a class="btn btn-tnafos action-button pr-3" role="button" href="{{route('register')}}">Sign
+                            Up</a>
                         @endif
                         @endauth
                     </span>
@@ -67,11 +69,11 @@
         <div class="content">
             <div class="title m-b-md">
                 <img src="{{asset('/img/logo.svg')}}" width="150vw" alt="">
-                tnafos  تنافس
+                tnafos تنافس
             </div>
             <div class="search">
                 <div class="form-group">
-                    <form action="{{-- {{route('search')}} --}}" method="get">
+                    <form action="{{action('HomeController@search')}}" method="get">
                         {{-- @csrf --}}
                         <div class="input-group">
                             <input type="text" class="form-control" id="home-search" placeholder="Search for..."

@@ -5,6 +5,10 @@ Update Your Company Profile
 
 @endsection
 
+@section('pagecss')
+<link href="{{asset('vendor/dropzone/dist/dropzone.css')}}" rel="stylesheet" type="text/css">
+@endsection
+
 @section('content')
 <div class="row">
     @if ($errors->any())
@@ -27,7 +31,7 @@ Update Your Company Profile
             <div class="card-body">
                 {{-- form starts here --}}
                 <form method="post" action="{{action('CompanyController@update', $company)}}" class="form-horizontal"
-                    id="company_form">
+                    id="company_form" enctype="multipart/form-data">
                     @csrf
                     @method('put')
                     {{-- name --}}
@@ -83,30 +87,11 @@ Update Your Company Profile
                         <label class="col-sm-2 col-form-label text-md-right">Main Services</label>
                         <div class="col-sm-10">
                             <div class="form-group bmd-form-group">
-                                <select name="main_services" class="form-control" name="type" id="type" required>
-                                    <option value="" disabled selected>Please select one</option>
-                                    <option value="Computing">Computing</option>
-                                    <option value="Networks & Communication">Networks & Communication</option>
-                                    <option value="Software">Software</option>
-                                    <option value="Software">Profesional Services</option>
-                                    <option value="Consulting">Consulting</option>
-                                    <option value="Finance">Finance</option>
-                                    <option value="Insurance">Insurance</option>
-                                    <option value="Travel">Travel</option>
-                                    <option value="Events">Events</option>
-                                    <option value="Food">Food</option>
-                                    <option value="Marketing">Marketing</option>
-                                    <option value="Reasearch">Reasearch</option>
-                                    <option value="Media">Media</option>
-                                    <option value="Distribution">Distribution</option>
-                                    <option value="Supply">Supply</option>
-                                    <option value="Printing & Prototyping">Printing & Prototyping</option>
-                                    <option value="Production">Production</option>
-                                    <option value="Engineering">Engineering</option>
-                                    <option value="Design">Design</option>
-                                    <option value="Utilities">Utilities</option>
-                                    <option value="Logistics">Logistics</option>
-                                    <option value="Waste Management">Waste Management</option>
+                                <select class="form-control" name="category_id" id="type" required>
+                                    <option value="" disabled>Please select one</option>
+                                    @foreach ($categories as $category)
+                                    <option value="{{$category->id}}" {{($company->category->id == $category->id) ? 'selected' : ''}}>{{$category->name}}</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
@@ -119,7 +104,8 @@ Update Your Company Profile
                                 <select class="form-control" name="establishment_year" id="establishment_year" required>
                                     <option value="" disabled selected>Please select one</option>
                                     @for ($i = 2020; $i > 1900; $i--)
-                                    <option value="{{$i}}" {{ ($company->establishment_year == $i) ? 'selected' : ''}}>{{$i}}</option>
+                                    <option value="{{$i}}" {{ ($company->establishment_year == $i) ? 'selected' : ''}}>
+                                        {{$i}}</option>
                                     @endfor
                                 </select>
                             </div>
@@ -193,7 +179,9 @@ Update Your Company Profile
                                 <select class="form-control" name="country" id="country" required>
                                     <option value="" disabled selected>Please select one</option>
                                     @foreach ($countries as $country)
-                                    <option value="{{$country->name}}" {{ ($company->country == $country->name) ? 'selected' : '' }}>{{$country->name}}</option>
+                                    <option value="{{$country->name}}"
+                                        {{ ($company->country == $country->name) ? 'selected' : '' }}>{{$country->name}}
+                                    </option>
                                     @endforeach
                                 </select>
                             </div>
@@ -249,6 +237,17 @@ Update Your Company Profile
                             </div>
                         </div>
                     </div>
+                    {{-- logo --}}
+                    <div class="row">
+                        <label class="col-sm-2 col-form-label text-md-right">logo</label>
+                        <div class="col-sm-10">
+                            <div class="custom-file">
+                                <input type="file" name="logo" class="custom-file-input" id="validatedCustomFile" required>
+                                <label class="custom-file-label" for="validatedCustomFile">Choose file...</label>
+                                <div class="invalid-feedback">Example invalid custom file feedback</div>
+                            </div>
+                        </div>
+                    </div>
                     <hr>
                     {{-- terms and condition --}}
                     <div class="row py-4">
@@ -293,4 +292,8 @@ Update Your Company Profile
         </div>
     </div>
 </div>
+@endsection
+
+@section('page_scripts')
+<script src="{{asset('vendor/dropzone/dist/dropzone.js')}}"></script>
 @endsection

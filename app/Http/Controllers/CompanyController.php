@@ -7,14 +7,16 @@ use App\Company;
 use App\Country;
 use App\User;
 use App\Http\Requests\CompanyStoreRequest;
+use Facade\FlareClient\Stacktrace\File;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class CompanyController extends Controller
 {
 
     public function __construct()
     {
-        $this->middleware('CheckCompany')->except([
+        $this->middleware('check.company')->except([
             'index',
             'create',
         ]);
@@ -48,7 +50,7 @@ class CompanyController extends Controller
     {
         //
         if (is_null(auth()->user()->company_id)) {
-            $categories = Category::where('parent_id','=', NULL)->get();
+            $categories = Category::where('parent_id', '=', NULL)->get();
             $countries = Country::all();
             return view('admin.company.create')->with([
                 'categories' => $categories,
@@ -74,6 +76,26 @@ class CompanyController extends Controller
         'address', 'location','admin'
 
         */
+        $request->validate([
+            'name' => 'required',
+            'type' => 'required',
+            'cr' => 'required',
+            'vat' => 'required',
+            'establishment_year' => 'required',
+            'total_employees' => 'required',
+            'bio' => 'required',
+            'telephone' => 'required',
+            'fax' => 'required',
+            'email' => 'required',
+            'website' => 'required',
+            'country' => 'required',
+            'city' => 'required',
+            'po_box' => 'required',
+            'zip_code' => 'required',
+            'address' => 'required',
+            'location' => 'required',
+            'logo' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
 
         $company = new Company;
         $company->name = $request->name;
@@ -93,6 +115,15 @@ class CompanyController extends Controller
         $company->zip_code = $request->zip_code;
         $company->address = $request->address;
         $company->location = $request->location;
+        // logo
+        //
+        if ($request->file('logo')) {
+            $image = $request->file('logo')->store('public/img/companies');
+
+            //Storage::putFile($image, new File('/img/companies'));
+            $company->logo = $image;
+        }
+
         $company->category_id = $request->category_id;
         $company->admin_id = auth()->user()->id;
         $company->save();
@@ -123,11 +154,15 @@ class CompanyController extends Controller
     {
         //
         if (auth()->user()->id == auth()->user()->company->admin->id) {
+            $categories = Category::where('parent_id', '=', NULL)->get();
             $countries = Country::all();
-            return view('admin.company.edit')->with('company', $company)->with('countries', $countries);
+            return view('admin.company.edit')->with('company', $company)->with([
+                'categories' => $categories,
+                'countries' => $countries
+            ]);
         } else {
             $error = 'You are not the admin of this company!';
-            return redirect()->route('company.index')->with('error',$error );
+            return redirect()->route('company.index')->with('error', $error);
         }
     }
 
@@ -159,6 +194,14 @@ class CompanyController extends Controller
         $company->address = $request->address;
         $company->location = $request->location;
         $company->category_id = $request->category_id;
+        if ($request->file('logo')) {
+            $image = $request->file('logo')->store('public/img/companies');
+            // remove the public from the image string to store it in DB
+            $image = str_replace('public/','', $image);
+            //
+            $company->logo = $image;
+        }
+
         $company->save();
         return redirect()->route('company.index');
     }

@@ -39,6 +39,7 @@ class CreateCompaniesTable extends Migration
             $table->string('zip_code');
             $table->string('address');
             $table->string('location');
+            $table->string('logo');
             $table->unsignedBigInteger('admin_id');
             $table->foreign('admin_id')->references('id')->on('users');
             $table->unsignedBigInteger('category_id');

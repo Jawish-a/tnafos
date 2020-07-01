@@ -32,5 +32,9 @@ class Company extends Model
     {
         return $this->belongsToMany('App\Service')->withPivot('rate', 'unit', 'type')->withTimestamps();
     }
+    public function purchaseRequests()
+    {
+        return $this->hasMany('App\PurchaseRequest');
+    }
 
 }

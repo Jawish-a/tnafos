@@ -12,7 +12,7 @@
                 <a class="dropdown-toggle pl-3" href="#" id="userDropdown" role="button" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false">
                     <span class="mr-2 d-none d-lg-inline text-gray-600">{{auth()->user()->name}}</span>
-                    <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
+                    <img class="img-profile rounded-circle" src="http://via.placeholder.com/60">
                 </a>
                 {{-- user dropdown menu --}}
                 <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">

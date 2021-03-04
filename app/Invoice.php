@@ -4,17 +4,17 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Estimate extends Model
+class Invoice extends Model
 {
     protected $fillable = [
-        'uuid', 'date', 'expiryDate', 'status', 'notes', 'terms',
+        'uuid', 'date', 'dueDate', 'status', 'notes', 'terms',
         'pruchase_request_id', 'company_id', 'user_id', 'client_id',
         'subtotal', 'discount', 'tax', 'total',
     ];
     //
-    public function purchaseRequest()
+    public function estimate()
     {
-        return $this->belongsTo('App\PurchaseRequest');
+        return $this->belongsTo('App\Estimate');
     }
 
     public function company()
@@ -29,6 +29,6 @@ class Estimate extends Model
 
     public function lines()
     {
-        return $this->hasMany('App\EstimateLine');
+        return $this->hasMany('App\InvoiceLine');
     }
 }

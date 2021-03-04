@@ -34,6 +34,12 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('estimate/outgoing', 'EstimateController@outgoing')->name('estimate.outgoing')->middleware('auth');
     Route::get('estimate/setStatus/{uuid}', 'EstimateController@setStatus')->name('estimate.setStatus')->middleware('auth');
     Route::resource('estimate', 'EstimateController')->except('create')->middleware('auth');
+    Route::get('invoice/create/{uuid?}', 'InvoiceController@create')->name('invoice.create');
+    Route::get('invoice/incomming', 'InvoiceController@incomming')->name('invoice.incomming')->middleware('auth');
+    Route::get('invoice/outgoing', 'InvoiceController@outgoing')->name('invoice.outgoing')->middleware('auth');
+    Route::get('invoice/setStatus/{uuid}', 'InvoiceController@setStatus')->name('invoice.setStatus')->middleware('auth');
+    Route::resource('invoice', 'InvoiceController')->except('create')->middleware('auth');
+
 });
 
 Route::get('/search', 'HomeController@search')->name('search');

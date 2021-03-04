@@ -93,6 +93,21 @@
             </div>
         </div>
     </li>
+    {{-- invoice --}}
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#invoices" aria-expanded="true"
+            aria-controls="invoices">
+            <i class="fas fa-fw fa-wrench"></i>
+            <span>Invoices</span>
+        </a>
+        <div id="invoices" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <a class="collapse-item" href="{{route('invoice.incomming')}}">Incomming</a>
+                <a class="collapse-item" href="{{route('invoice.outgoing')}}">Outgoing</a>
+            </div>
+        </div>
+    </li>
+
     {{-- end of estimates --}}
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">

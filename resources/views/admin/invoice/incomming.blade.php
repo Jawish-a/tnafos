@@ -3,13 +3,13 @@
 <link href="{{asset('vendor/datatables/dataTables.bootstrap4.min.css')}}" rel="stylesheet">
 @endsection
 @section('page_title')
-List of Outgoing Estimates
-<a href="{{route('service.create')}}" class="float-right fa fa-plus btn-circle btn-tnafos shadow"></a>
+List of Incoming Invoices
+<a href="{{route('invoice.create')}}" class="float-right fa fa-plus btn-circle btn-tnafos shadow"></a>
 @endsection
 @section('content')
 <div class="card shadow mb-4">
     <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+        <h6 class="m-0 font-weight-bold text-primary">List of Invoices</h6>
     </div>
     <div class="card-body">
 
@@ -29,7 +29,10 @@ List of Outgoing Estimates
                         Date</th>
                     <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1"
                         aria-label="Start date: activate to sort column ascending" style="width: 105px;">
-                        Details</th>
+                        Total</th>
+                    <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1"
+                        aria-label="Start date: activate to sort column ascending" style="width: 105px;">
+                        Status</th>
                     <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1"
                         aria-label="Salary: activate to sort column ascending" style="width: 95px;">
                         Options</th>
@@ -41,18 +44,20 @@ List of Outgoing Estimates
                     <th rowspan="1" colspan="1">Company</th>
                     <th rowspan="1" colspan="1">Date</th>
                     <th rowspan="1" colspan="1">Total</th>
+                    <th rowspan="1" colspan="1">Status</th>
                     <th rowspan="1" colspan="1">Options</th>
                 </tr>
             </tfoot>
             <tbody>
-                @foreach ($estimates as $estimate)
+                @foreach ($invoices as $invoice)
                 <tr role="row">
-                    <td class="sorting_1"><a href="{{route('estimate.show', $estimate->id)}}">{{$estimate->uuid}}</a>
+                    <td class="sorting_1"><a href="{{route('invoice.show', $invoice->id)}}">{{$invoice->uuid}}</a>
                     </td>
-                    <td>{{$estimate->company->name}}</td>
-                    <td>{{$estimate->date}}</td>
-                    <td>{{$estimate->total}}</td>
-                    <td>Oprions</td>
+                    <td>{{$invoice->company->name}}</td>
+                    <td>{{$invoice->date}}</td>
+                    <td>{{$invoice->total}}</td>
+                    <td class="text-center"> <span class="badge badge-pill badge-success"> {{$invoice->status}}</span></td>
+                    <td>Options</td>
                 </tr>
 
                 @endforeach

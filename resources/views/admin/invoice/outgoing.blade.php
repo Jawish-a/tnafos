@@ -3,13 +3,13 @@
 <link href="{{asset('vendor/datatables/dataTables.bootstrap4.min.css')}}" rel="stylesheet">
 @endsection
 @section('page_title')
-List of Outgoing Estimates
-<a href="{{route('service.create')}}" class="float-right fa fa-plus btn-circle btn-tnafos shadow"></a>
+List of Outgoing Invoices
+<a href="{{route('invoice.create')}}" class="float-right fa fa-plus btn-circle btn-tnafos shadow"></a>
 @endsection
 @section('content')
 <div class="card shadow mb-4">
     <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+        <h6 class="m-0 font-weight-bold text-primary">List Of Invoices</h6>
     </div>
     <div class="card-body">
 
@@ -45,13 +45,13 @@ List of Outgoing Estimates
                 </tr>
             </tfoot>
             <tbody>
-                @foreach ($estimates as $estimate)
+                @foreach ($invoices as $invoice)
                 <tr role="row">
-                    <td class="sorting_1"><a href="{{route('estimate.show', $estimate->id)}}">{{$estimate->uuid}}</a>
+                    <td class="sorting_1"><a href="{{route('invoice.show', $invoice->id)}}">{{$invoice->uuid}}</a>
                     </td>
-                    <td>{{$estimate->company->name}}</td>
-                    <td>{{$estimate->date}}</td>
-                    <td>{{$estimate->total}}</td>
+                    <td>{{$invoice->company->name}}</td>
+                    <td>{{$invoice->date}}</td>
+                    <td>{{$invoice->total}}</td>
                     <td>Oprions</td>
                 </tr>
 

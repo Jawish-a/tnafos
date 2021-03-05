@@ -15,13 +15,6 @@ class CreateCompaniesTable extends Migration
     {
         Schema::create('companies', function (Blueprint $table) {
             $table->bigIncrements('id');
-            /*
-
-        'name', 'type', 'cr', 'vat', 'main_services', 'establishment_year', 'total_employees', 'bio',
-        'telephone', 'fax', 'email', 'website', 'country', 'city', 'po_box', 'zip_code',
-        'address', 'location',
-
-            */
             $table->string('name');
             $table->string('type');
             $table->string('cr');
@@ -41,9 +34,7 @@ class CreateCompaniesTable extends Migration
             $table->string('location');
             $table->string('logo');
             $table->unsignedBigInteger('admin_id');
-            $table->foreign('admin_id')->references('id')->on('users');
             $table->unsignedBigInteger('category_id');
-            $table->foreign('category_id')->references('id')->on('categories');
 
             $table->timestamps();
         });

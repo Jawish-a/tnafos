@@ -20,7 +20,6 @@ class CreateCompanyServiceTable extends Migration
             $table->unsignedBigInteger('company_id');
             $table->foreign('company_id')->references('id')->on('companies');
             $table->unsignedBigInteger('service_id');
-            $table->foreign('service_id')->references('id')->on('services');
             // pivot table extra fields
             $table->string('rate');
             $table->string('unit');

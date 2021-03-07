@@ -159,7 +159,7 @@ Create New Service
                             <div class="custom-control custom-checkbox large">
                                 <input type="checkbox" class="custom-control-input" id="terms" required>
                                 <label class="custom-control-label" for="terms" required>I agree to Tnafos <a
-                                        href="http://">Terms of Servie</a> and <a href="http://">Privacy
+                                        href="#">Terms of Servie</a> and <a href="#">Privacy
                                         Policy</a></label>
                             </div>
                         </div>

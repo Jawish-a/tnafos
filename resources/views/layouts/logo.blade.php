@@ -1,5 +1,5 @@
 <svg id="ae9a0706-d2c6-4063-905e-123e81e16a38" style="max-width:100px; width:50px" data-name="Layer 1"
-    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 139.04 153.63">
+    xmlns="https://www.w3.org/2000/svg" viewBox="0 0 139.04 153.63">
     <defs>
         <style>
             .ee274e71-3c40-4498-abbd-362208878724 {

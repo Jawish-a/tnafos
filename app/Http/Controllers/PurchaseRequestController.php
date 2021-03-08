@@ -42,13 +42,9 @@ class PurchaseRequestController extends Controller
     public function incomming()
     {
         // this should show only the incomming purchase request
+
         $purchaseRequests = PurchaseRequest::where('company_id', '!=', auth()->user()->company->id)->get();
-        /* if ($purchaseRequests) {
-            return view('admin.purchase_request.index')->with('purchaseRequests', $purchaseRequests);
-        } */
-        if($purchaseRequests->isEmpty()){
-            return view('admin.purchase_request.incomming')->with('purchaseRequests', $purchaseRequests);
-        }
+
         foreach ($purchaseRequests as $pr) {
             foreach ($pr->lines as $line) {
                 foreach ($line->service->companies as $company) {
@@ -59,6 +55,8 @@ class PurchaseRequestController extends Controller
                 }
             }
         }
+        return view('admin.purchase_request.incomming')->with('purchaseRequests', $purchaseRequests);
+
     }
 
     public function outgoing()

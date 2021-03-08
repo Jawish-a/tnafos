@@ -46,7 +46,7 @@ class HomeController extends Controller
         //
         $query = $request->input('query');
         //$products = Product::search($query)->get();
-        $services = Service::where('name', 'like', '%' . $query . '%')->orWhere('description', 'like', '%' . $query . '%')->get();
+        $services = Service::where('name', 'LIKE', '%' . $query . '%')->orWhere('description', 'LIKE', '%' . $query . '%')->get();
         //return $services;
         return view('search')->with('services', $services)->with('list', $quest->services);
     }

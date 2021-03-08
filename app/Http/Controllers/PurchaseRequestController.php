@@ -46,6 +46,9 @@ class PurchaseRequestController extends Controller
         /* if ($purchaseRequests) {
             return view('admin.purchase_request.index')->with('purchaseRequests', $purchaseRequests);
         } */
+        if($purchaseRequests->isEmpty()){
+            return view('admin.purchase_request.incomming')->with('purchaseRequests', $purchaseRequests);
+        }
         foreach ($purchaseRequests as $pr) {
             foreach ($pr->lines as $line) {
                 foreach ($line->service->companies as $company) {

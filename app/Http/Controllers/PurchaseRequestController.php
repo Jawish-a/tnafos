@@ -55,7 +55,7 @@ class PurchaseRequestController extends Controller
                 }
             }
         }
-        return view('admin.purchase_request.incomming')->with('purchaseRequests', $purchaseRequests);
+        return redirect()->back();
 
     }
 

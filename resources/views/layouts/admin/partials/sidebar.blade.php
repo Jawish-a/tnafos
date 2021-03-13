@@ -110,7 +110,7 @@
 
     {{-- end of estimates --}}
     <!-- Divider -->
-    <hr class="sidebar-divider d-none d-md-block">
+    {{-- <hr class="sidebar-divider d-none d-md-block">
     <div class="sidebar-heading">
         App Settings
     </div>
@@ -118,15 +118,15 @@
     <!-- Nav Item - Tables -->
     <li class="nav-item">
         <a class="nav-link" href="{{route('settings.index')}}">
-            <i class="fas fa-fw fa-table"></i>
-            <span>Settings</span></a>
+    <i class="fas fa-fw fa-table"></i>
+    <span>Settings</span></a>
     </li>
     <li class="nav-item">
         <a class="nav-link" href="{{route('category.index')}}">
             <i class="fas fa-fw fa-table"></i>
             <span>Category</span></a>
     </li>
-    <hr class="sidebar-divider d-none d-md-block">
+    <hr class="sidebar-divider d-none d-md-block"> --}}
 
     <!-- Sidebar Toggler (Sidebar) -->
     <div class="text-center d-none d-md-inline">

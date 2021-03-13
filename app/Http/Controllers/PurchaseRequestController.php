@@ -45,11 +45,14 @@ class PurchaseRequestController extends Controller
 
         $purchaseRequests = PurchaseRequest::where('company_id', '!=', auth()->user()->company->id)->get();
 
+        $newPurchaseRequests = [];
+
         foreach ($purchaseRequests as $pr) {
             foreach ($pr->lines as $line) {
                 foreach ($line->service->companies as $company) {
                     if ($company->id == auth()->user()->company->id) {
-                        return view('admin.purchase_request.incomming')->with('purchaseRequests', $purchaseRequests);
+                        array_push($newPurchaseRequests, $pr);
+                        return view('admin.purchase_request.incomming')->with('purchaseRequests', $newPurchaseRequests);
                         //return 'yes';
                     }
                 }

@@ -11,13 +11,14 @@
                         <h5 class="card-title text-muted text-uppercase text-center">Purchase Request List</h5>
                         <hr>
                         <ul class="fa-ul">
-                            @if ($list)
+                            {{-- @if ($list)
                             @foreach ($list as $item)
-                            <li><span class="fa-li"><i class="fas fa-check"></i></span>{{$item['service']['name']}}</li>
+                            <li><span class="fa-li"><i class="fas fa-check"></i></span>{{$item['service']['name']}}
+                            </li>
                             @endforeach
                             @else
                             <h3 class="text-gray-400">List is empty</h3>
-                            @endif
+                            @endif --}}
                         </ul>
                         <a href="{{route('list')}}" class="btn btn-block btn-primary text-uppercase">View List</a>
                     </div>
@@ -30,21 +31,20 @@
         </div>
         <div class="col-md-9">
             <div class="row">
-                @foreach ($services as $service)
-                <div class="col-lg-4 col-sm-6 mb-4">
-                    <div class="card h-100 shadow">
-                        <a href="#"><img class="card-img-top" src="https://placehold.it/700x400" alt=""></a>
-                        <div class="card-body">
-                            <h4 class="card-title text-center">
-                                <a href="{{route('service.show', $service->id)}}">{{$service->name}}</a>
-                            </h4>
-                            <p class="card-text">{{$service->description}}</p>
-                            <a href="{{route('addToList', $service->id)}}"
-                                class="btn btn-block btn-tnafos rounded-pill">Add to List</a>
+                <h3>list of companies that provide this service</h3>
+                <hr class="py-3">
+                <div class="card shadow">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <a href="#"><img class="card-img-top" src="https://placehold.it/700x400" alt=""></a>
+                        </div>
+                        <div class="col-md-8 card-body">
+                            <p class="card-text">ldksldks</p>
+                            <a href="#" class="btn btn-block btn-tnafos rounded-pill">Add to List</a>
                         </div>
                     </div>
+
                 </div>
-                @endforeach
             </div>
         </div>
     </div>
